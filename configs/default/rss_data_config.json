@@ -1,0 +1,112 @@
+{
+    
+    "original_data_file": "./data/rss/sampled_merged_data1.csv",
+    "overwrite": true,
+    "dataset_type": "dataframe",
+    "dp": false,
+    
+    "flowid": {
+        "column": "Store"
+    },
+
+    "timestamp": {
+        "column": "Date",
+        "generation": true,
+        "encoding": "interarrival",
+        "normalization": "ZERO_ONE"
+    },
+
+    "metadata": [
+        {
+            "column": "StoreType",
+            "type": "string",
+            "encoding": "categorical" 
+        },
+        {
+            "column": "Assortment",
+            "type": "string",
+            "encoding": "categorical" 
+        },
+        {
+            "column": "CompetitionDistance",
+            "type": "float",
+            "encoding": "numerical",
+            "normalization": "ZERO_ONE",
+            "min_x": 0.0,
+            "max_x": 80000.0
+        },
+        {
+            "column": "CompetitionOpenSinceMonth",
+            "type": "integer",
+            "encoding": "categorical"            
+        },
+        {
+            "column": "CompetitionOpenSinceYear",
+            "type": "integer",
+            "encoding": "categorical"            
+        },
+        {
+            "column": "Promo2",
+            "type": "integer",
+            "encoding": "categorical"
+        },
+        {
+            "column": "Promo2SinceWeek",
+            "type": "integer",
+            "encoding": "numerical"
+        },
+        {
+            "column": "Promo2SinceYear",
+            "type": "integer",
+            "encoding": "categorical"
+        },
+        {
+            "column": "PromoInterval",
+            "type": "string",
+            "encoding": "categorical"
+        }
+    ],
+    "timeseries": [
+        {
+            "column":  "DayOfWeek",
+            "type": "integer",
+            "encoding": "categorical"
+        },
+        {
+            "column":  "Open",
+            "type": "integer",
+            "encoding": "categorical",
+            "choices": [
+                0,
+                1
+            ]
+        },
+        {
+            "column":  "Promo",
+            "type": "integer",
+            "encoding": "categorical",
+            "choices": [
+                0,
+                1
+            ]
+        },
+        {
+            "column":  "StateHoliday",
+            "type": "integer",
+            "encoding": "categorical",
+            "choices": [
+                0,
+                1
+            ]
+        },
+        {
+            "column":  "SchoolHoliday",
+            "type": "integer",
+            "encoding": "categorical",
+            "choices": [
+                0,
+                1
+            ]
+        }
+    ]
+}

@@ -1,0 +1,154 @@
+{
+    
+    "original_data_file": "./data/orig_data.csv",
+    "overwrite": true,
+    "dataset_type": "dataframe",
+    "dp": false,
+        
+    "timestamp": {
+        "column": "timestamp",
+        "generation": true,
+        "encoding": "interarrival",
+        "normalization": "ZERO_ONE"
+    },
+
+    "metadata": [
+        {
+            "column": "curCDNs",
+            "type": "string",
+            "encoding": "word2vec_cdn"
+        },
+        {
+            "column": "state",
+            "type": "string",
+            "encoding": "word2vec_state"
+        },
+        {
+            "column": "isp",
+            "type": "string",
+            "encoding": "word2vec_isp"
+        },
+        {
+            "column": "isAd",
+            "type": "integer",
+            "encoding": "categorical",
+            "choices": [
+                0,
+                1
+            ]
+        }
+    ],
+    "timeseries": [
+        {
+            "column":  "hasEnded",
+            "type": "integer",
+            "encoding": "categorical",
+            "choices": [
+                0,
+                1
+            ]
+        },
+        {
+            "column":  "justJoined",
+            "type": "integer",
+            "encoding": "categorical",
+            "choices": [
+                0,
+                1
+            ]
+        },
+        {
+            "column":  "shouldProcess",
+            "type": "integer",
+            "encoding": "categorical",
+            "choices": [
+                0,
+                1
+            ]
+        },
+        {
+            "column":  "joined",
+            "type": "integer",
+            "encoding": "categorical",
+            "choices": [
+                0,
+                1
+            ]
+        },
+        {
+            "column":  "endedPlays",
+            "type": "integer",
+            "encoding": "categorical",
+            "choices": [
+                0,
+                1
+            ]
+        },
+        {
+            "column":  "isEbvs",
+            "type": "integer",
+            "encoding": "categorical",
+            "choices": [
+                0,
+                1
+            ]
+        },
+        {
+            "column":  "isVsf",
+            "type": "integer",
+            "encoding": "categorical",
+            "choices": [
+                0,
+                1
+            ]
+        },
+        {
+            "column":  "isVpft",
+            "type": "integer",
+            "encoding": "categorical",
+            "choices": [
+                0,
+                1
+            ]
+        },
+        {
+            "column": "attempts",
+            "type": "integer",
+            "encoding": "categorical",
+            "choices": [
+                0,
+                1
+            ]
+        },
+        {
+            "column": "Vst",
+            "type": "float",
+            "normalization": "ZERO_ONE",
+            "min_x": -3.0,
+            "max_x": 121651.0
+        },
+        {
+            "column": "connInducedBufferingTimeMs",
+            "type": "float",
+            "normalization": "ZERO_ONE",
+            "min_x": 0.0,
+            "max_x": 51872.0
+        },
+        {
+            "column": "intvBufferingTimeMs",
+            "type": "float",
+            "normalization": "ZERO_ONE",
+            "min_x": 0.0,
+            "max_x": 51872.0
+        },
+        {
+            "column": "intvPlayingTimeMs",
+            "type": "float",
+            "normalization": "ZERO_ONE",
+            "min_x": 0.0,
+            "max_x": 60000.0
+        }
+    ]
+}
+    
+}
