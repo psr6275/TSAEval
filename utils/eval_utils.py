@@ -1,9 +1,37 @@
 import matplotlib.pyplot as plt
 import pandas as pd
+import pickle
 
 from config_io import Config
 
 from sdmetrics.reports.timeseries import QualityReport
+
+def preprocess_df(df, config_path, data_info_path, n_samples = None, random_state=42):
+    config = Config.load_from_file(config_path)
+    with open(data_info_path,"rb") as f:
+        data_info = pickle.load(f)
+    time_col = data_info['time_col']
+    join_on = data_info['join_on']    
+    
+    proc_df = df.copy()
+    print("Convert time column ==>")
+    if proc_df[time_col].dtype() == float:
+        proc_df[time_col] = proc_df[time_col].astype(int)
+    elif proc_df[time_col].dtype() == object:
+        proc_df[time_col] = pd.to_datetime(proc_df[time_col]).astype(int)//10**6
+    else:
+        assert proc_df[time_col].dtype()== int, "time column has dtype %s"%proc_df[time_col].dtype()
+
+    if n_samples is not None:
+        print("Sample data: %s"%n_samples)
+        sam_idx = df[join_on].unique()
+        sam_idx.sample(n=n_samples, random_state=random_state)
+        mask_sam = proc_df[join_on].isin(list(sam_idx.values))
+
+        sam_df = proc_df[mask_sam].sort_values(by=[join_on,time_col])
+        return sam_df
+    else:
+        return proc_df
 
 
 def read_file(file_path, dtype=None):
@@ -147,13 +175,20 @@ def create_sdmetrics_config(
     ]
     return sdmetrics_config
 
-def viz_sdmetric(real_df, synth_df, config_path, save_path):
+def viz_sdmetric(real_df, synth_df, config_path, save_path, cat_cols = None):
     sdmetrics_config = create_sdmetrics_config(config_path,'both')
     my_report = QualityReport(
             config_dict=sdmetrics_config['config'])
     print("total cols:",synth_df.columns)
     # inc_cols = list(set(synth_df.columns) - set(['index']))
     inc_cols = synth_df.columns
+    for col in real_df.columns:    
+        synth_df[col] = synth_df[col].astype(real_df[col].dtype)
+        if col in cat_cols:
+            real_df[col] = real_df[col].astype(str)
+            synth_df[col] = synth_df[col].astype(str)
+                    
+    
     # print("include cols: ",inc_cols)
     my_report.generate(real_df[inc_cols], synth_df[inc_cols],
                         sdmetrics_config['metadata'])

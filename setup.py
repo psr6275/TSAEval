@@ -4,7 +4,7 @@ from pathlib import Path
 VERSION = "0.0.1"
 DESCRIPTION = "TSAEval"
 this_directory = Path(__file__).parent
-LONG_DESCRIPTION = (this_directory / "README.md").read_text()
+LONG_DESCRIPTION = (this_directory / "readme.md").read_text()
 
 # Setting up
 setup(

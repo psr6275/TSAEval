@@ -1,0 +1,172 @@
+{
+    "original_data_file": "../../datasets/ngsim/rtf_test.csv",
+    "overwrite": true,
+    "dataset_type": "dataframe",        
+    "dp": false,
+
+    "flowid": {
+        "column": "index"
+    },
+    "timestamp": {
+        "column": "Global_Time",
+        "generation": true,
+        "encoding": "interarrival",
+        "normalization": "ZERO_ONE"
+    },
+    
+    "metadata": [
+        {
+            "column": "Total_Frames",
+            "type": "float",
+            "normalization": "ZERO_ONE"
+        },
+        {
+            "column": "Location",
+            "type": "integer",
+            "encoding": "word2vec_loc"                    
+        },
+        {
+            "column": "v_Class",
+            "type": "integer",
+            "encoding": "word2vec_vc"
+        },
+        {
+            "column": "v_length",
+            "type": "float",
+            "normalization": "ZERO_ONE"
+        },
+        {
+            "column": "v_Width",
+            "type": "float",
+            "normalization": "ZERO_ONE"
+        },
+        {
+            "column": "O_Zone",
+            "type": "string",
+            "encoding": "word2vec_zone"
+        },
+        {
+            "column": "D_Zone",
+            "type": "string",
+            "encoding": "word2vec_zone"
+        }
+    ],
+    "timeseries": [
+        {
+            "column":  "Local_X",
+            "type": "float",
+            "normalization": "ZERO_ONE",
+            "min_x": -150.0,
+            "max_x": 150.0
+        },
+        {
+            "column":  "Local_Y",
+            "type": "float",
+            "normalization": "ZERO_ONE",
+            "min_x": 0.0,
+            "max_x": 2200.0
+        },
+        {
+            "column":  "Global_X",
+            "type": "float",
+            "normalization": "ZERO_ONE",
+            "min_x": 2200000.0,
+            "max_x": 6500000.0,
+            "log1p_norm": true
+        },
+        {
+            "column":  "Global_Y",
+            "type": "float",
+            "normalization": "ZERO_ONE",
+            "min_x": 1200000.0,
+            "max_x": 2000000.0,
+            "log1p_norm": true
+        },
+        {
+            "column":  "v_Vel",
+            "type": "float",
+            "normalization": "ZERO_ONE",
+            "min_x": 0.0,
+            "max_x": 80.0
+        },
+        {
+            "column":  "v_Acc",
+            "type": "float",
+            "normalization": "ZERO_ONE",
+            "min_x": -20.0,
+            "max_x": 20.0
+        },
+        {
+            "column":  "Lane_ID",
+            "type": "integer",
+            "encoding": "categorical",
+            "choices": [
+                1,  4,  6,  5,  8,  0,  3,  7,  2,  9, 10
+            ]
+        },
+        {
+            "column":  "Int_ID",
+            "type": "integer",
+            "encoding": "categorical",
+            "choices": [
+                0, 2, 4, 3, 1, 5
+            ]                    
+        },
+        {
+            "column":  "Section_ID",
+            "type": "integer",
+            "encoding": "categorical",
+            "choices": [
+                3, 0, 2, 4, 5, 1, 6
+            ]                      
+        },
+        {
+            "column":  "Direction",
+            "type": "integer",
+            "encoding": "categorical",
+            "choices": [
+                3, 0, 1, 2
+            ]
+        },
+        {
+            "column":  "Movement",
+            "type": "integer",
+            "encoding": "categorical",
+            "choices": [
+                0, 1, 2
+            ]
+        },
+        {
+            "column":  "Following",
+            "type": "integer",
+            "encoding": "bit",
+            "n_bits": 11,
+            "categorical_mapping": true
+        },
+        {
+            "column":  "Preceding",
+            "type": "integer",
+            "encoding": "bit",
+            "n_bits": 11,
+            "categorical_mapping": true
+        },
+        {
+            "column": "Space_Headway",
+            "type": "float",
+            "normalization": "ZERO_ONE",
+            "min_x": 0.0,
+            "max_x": 2000.0,
+            "log1p_norm": true
+        },
+        {
+            "column": "Time_Headway",
+            "type": "float",
+            "normalization": "ZERO_ONE",
+            "min_x": 0.0,
+            "max_x": 20000.0,
+            "log1p_norm": true
+        }
+    ]
+}
+
+    
